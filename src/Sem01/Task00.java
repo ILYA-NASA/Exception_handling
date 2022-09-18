@@ -1,3 +1,5 @@
+package Sem01;
+
 public class Task00 {
     private static final int MIN_ARRAY_LEN = 3;
 

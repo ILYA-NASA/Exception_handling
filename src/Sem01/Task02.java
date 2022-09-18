@@ -1,3 +1,5 @@
+package Sem01;
+
 import java.util.Random;
 
 public class Task02 {
