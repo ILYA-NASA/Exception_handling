@@ -12,15 +12,16 @@ public class Lesson {
         try {
             file.createNewFile();
             fileWriter = new PrintWriter(file);
-            fileWriter.println("РђРЅРЅР°=4");
-            fileWriter.println("Р•Р»РµРЅР°=5");
-            fileWriter.println("РњР°СЂРёРЅР°=6");
-            fileWriter.println("Р’Р»Р°РґРёРјРёСЂ=?");
+            fileWriter.println("Анна=4");
+            fileWriter.println("Елена=5");
+            fileWriter.println("Марина=6");
+            fileWriter.println("Владимир=?");
+
 
 
         } catch (IOException e) {
-            System.out.println("РќРµ cРјРѕРіР»Рё СЃРѕР·РґР°С‚СЊ С„Р°Р№Р»");
-        } finally {
+            System.out.println("Не cмогли создать файл");
+        } finally{
             fileWriter.close();
 
         }
@@ -31,23 +32,23 @@ public class Lesson {
     private static void parseFile(File file) {
         Map<String, String> names = new HashMap<>();
         String temp;
-        if (file != null) {
+        if (file != null){
 
             try {
                 BufferedReader fileReader = new BufferedReader(new FileReader(file));
                 System.out.println(fileReader.readLine());
-                while ((temp = fileReader.readLine()) != null) {
+                while((temp = fileReader.readLine()) != null) {
                     System.out.println(temp);
-                    if (!"".equals(temp)) {
+                    if(!"".equals(temp)){
                         System.out.println("2 " + temp);
                         names.put(temp.split("=")[0], temp.split("=")[1]);
 
                     }
                 }
 
-                if (names.containsValue("?")) {
-                    for (Map.Entry<String, String> e : names.entrySet()) {
-                        if ("?".equals(e.getValue())) {
+                if(names.containsValue("?")){
+                    for(Map.Entry<String, String> e : names.entrySet()){
+                        if("?".equals(e.getValue())) {
                             e.setValue(String.valueOf(e.getKey().length()));
                         }
                     }
@@ -55,7 +56,7 @@ public class Lesson {
                 System.out.println(names);
 
             } catch (FileNotFoundException e) {
-                System.out.println("РќРµ СЃРјРѕРіР»Рё РїСЂРѕС‡РёС‚Р°С‚СЊ С„Р°Р№Р»");
+                System.out.println("Не смогли прочитать файл");
             } catch (IOException e) {
                 e.printStackTrace();
             }
